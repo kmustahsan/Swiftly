@@ -1,0 +1,10 @@
+It really doesn't matter what the JSON looks like, so do something simple:
+
+{"items": {
+  "barcode": "3500074140",
+  "name": "Colgate Toothpaste",
+  "price": "10.00"
+}}
+
+
+When making the two screens (the recipt and shopping cart -- Kevin & Khoa) add the swipe gesture to and from your screen ( so swiping from the barcode screen to recipt and from the reciept to barcode screen). I insterted a comment to where you can find the barcode details. 
