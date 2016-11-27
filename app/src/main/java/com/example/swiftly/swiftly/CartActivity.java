@@ -33,6 +33,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     TextView total;
     Button checkout;
     LinearLayout page;
+    Receipt receipt;
 
     float subtotal_amt;
     TouchHandler touchHandler;
@@ -43,6 +44,8 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_cart);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        receipt = new Receipt();
 
         listView = (ListView) findViewById(R.id.list);
         subtotal = (TextView) findViewById(R.id.subtotal);
@@ -72,8 +75,12 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 cost *= Float.parseFloat(item.get("count").toString());
                 subtotal_amt += cost;
             }
+            receipt.setItems(shoppingCartJson);
             float tax_amt = .05f * subtotal_amt;
             float total_amt = tax_amt + subtotal_amt;
+            receipt.setSubtotal(subtotal_amt);
+            receipt.setTax(tax_amt);
+            receipt.setTotal(total_amt);
             subtotal.setText("$" + String.format("%.2f", subtotal_amt));
             tax.setText("$" + String.format("%.2f", tax_amt));
             total.setText("$" + String.format("%.2f", total_amt));
@@ -98,6 +105,12 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
             }
             float tax_amt = .05f * subtotal_amt;
             float total_amt = tax_amt + subtotal_amt;
+
+            receipt.setItems(shoppingCartJson);
+            receipt.setSubtotal(subtotal_amt);
+            receipt.setTax(tax_amt);
+            receipt.setTotal(total_amt);
+
             subtotal.setText("$" + String.format("%.2f", subtotal_amt));
             tax.setText("$" + String.format("%.2f", tax_amt));
             total.setText("$" + String.format("%.2f", total_amt));
