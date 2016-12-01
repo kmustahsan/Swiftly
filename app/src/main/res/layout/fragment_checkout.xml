@@ -1,0 +1,151 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.checkout">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Checkout"
+                android:textSize="30dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="5dp"
+                android:background="@android:color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Choose a method of payment"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/selection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/taylor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="xx45 Taylor Swift"
+                    android:textSize="20dp" />
+
+                <RadioButton
+                    android:id="@+id/stephen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="xx64 Stephen Curry"
+                    android:textSize="20dp" />
+
+                <RadioButton
+                    android:id="@+id/credit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Debit/Credit Card"
+                    android:textSize="20dp" />
+            </RadioGroup>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="37dp">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Card Number" />
+                </TableRow>
+
+                <TableRow>
+
+                    <EditText
+                        android:id="@+id/number"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:maxLines="1" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MM/YY" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CVC" />
+                </TableRow>
+                <TableRow>
+                    <EditText
+                        android:id="@+id/date"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:maxLines="1" />
+                    <EditText
+                        android:id="@+id/cvc"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:maxLines="1" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cardholder Name" />
+                </TableRow>
+                <TableRow>
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:maxLines="1" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Billing Address" />
+                </TableRow>
+                <TableRow>
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:maxLines="1" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:id="@+id/cancel"
+                        android:text="Cancel"
+                        android:textSize="25dp"
+                        android:layout_margin="10dp" />
+                    <Button
+                        android:id="@+id/next"
+                        android:text="Continue"
+                        android:textSize="25dp"
+                        android:layout_margin="10dp"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
