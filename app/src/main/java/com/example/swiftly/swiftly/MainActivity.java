@@ -160,7 +160,8 @@ public class MainActivity extends Activity {
     }
 
     public void onSwipeRight() {
-
+        Intent intent = new Intent(this, PurchaseActivity.class);
+        startActivity(intent);
     }
 
     public void onSwipeLeft() {

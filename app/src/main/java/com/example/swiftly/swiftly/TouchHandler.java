@@ -13,18 +13,26 @@ public class TouchHandler implements View.OnTouchListener {
 
     MainActivity mainActivity;
     CartActivity cartActivity;
+    PurchaseActivity purchaseActivity;
     GestureDetectorCompat gestureDetectorCompat;
-    boolean main = true;
+    int main = 1;
 
     public TouchHandler(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
+        main = 1;
         gestureDetectorCompat = new GestureDetectorCompat(this.mainActivity, new MyGestureListener());
     }
 
     public TouchHandler(CartActivity cartActivity) {
         this.cartActivity = cartActivity;
-        main = false;
+        main = 2;
         gestureDetectorCompat = new GestureDetectorCompat(this.cartActivity, new MyGestureListener());
+    }
+
+    public TouchHandler(PurchaseActivity purchaseActivity) {
+        this.purchaseActivity = purchaseActivity;
+        main = 3;
+        gestureDetectorCompat = new GestureDetectorCompat(this.purchaseActivity, new MyGestureListener());
     }
 
     @Override
@@ -43,17 +51,23 @@ public class TouchHandler implements View.OnTouchListener {
                 if (e1.getX() > e2.getX()) {
                     // swiped left
                     System.out.println("LEFT");
-                    if (main)
+                    if (main == 1)
                         mainActivity.onSwipeLeft();
-                    else
+                    else if (main == 2)
                         cartActivity.onSwipeLeft();
+                    else {
+                        purchaseActivity.onSwipeLeft();
+                    }
                 }
                 else {
                     System.out.println("RIGHT");
-                    if (main)
+                    if (main == 1)
                         mainActivity.onSwipeRight();
-                    else
+                    else if (main == 2)
                         cartActivity.onSwipeRight();
+                    else {
+                        purchaseActivity.onSwipeRight();
+                    }
                 }
             }
 
