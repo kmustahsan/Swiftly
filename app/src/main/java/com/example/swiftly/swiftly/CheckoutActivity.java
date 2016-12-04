@@ -51,8 +51,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         String clicked = ((TextView) view).getText().toString();
         if (clicked.equals("Cancel")) {
             // TODO
-        }
-        else {
+        } else {
             int selected = selection.getCheckedRadioButtonId();
             if (selected == -1) {
                 Toast toast = Toast.makeText(this, "Please select a payment option", Toast.LENGTH_SHORT);
@@ -63,17 +62,44 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
             String text = (String) buttonSelected.getText();
             if (text.equals("xx45 Taylor Swift")) {
                 info = new PaymentInformation("6281157490851245", "12/22", "524", "Taylor Swift",
-                                              "242 West Main Street, Hendersonville, TN 37075");
+                        "242 West Main Street, Hendersonville, TN 37075");
             }
             else if (text.equals("xx64 Stephen Curry")) {
                 info = new PaymentInformation("7881257650851264", "05/22", "722", "Stephen Curry",
-                                              "1011 Broadway, Oakland, CA 94607");
+                        "1011 Broadway, Oakland, CA 94607");
             }
             else {
+                if (number.getText().toString().equals("") || date.getText().toString().equals("") ||
+                        cvc.getText().toString().equals("") || name.getText().toString().equals("") ||
+                        address.getText().toString().equals("")) {
+                    Toast toast = Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
                 info = new PaymentInformation(number.getText().toString(), date.getText().toString(),
-                                               cvc.getText().toString(), name.getText().toString(),
-                                               address.getText().toString());
+                        cvc.getText().toString(), name.getText().toString(),
+                        address.getText().toString());
             }
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        int selected = selection.getCheckedRadioButtonId();
+        outState.putInt("selected", selected);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        int saved = savedInstanceState.getInt("selected");
+        RadioButton buttonSelected = (RadioButton) findViewById(saved);
+        buttonSelected.setChecked(true);
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
