@@ -81,7 +81,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 cost *= Float.parseFloat(item.get("count").toString());
                 subtotal_amt += cost;
             }
-            receipt.setItems(shoppingCartJson);
+            receipt.setItems(shoppingCart);
             float tax_amt = .05f * subtotal_amt;
             float total_amt = tax_amt + subtotal_amt;
             receipt.setSubtotal(subtotal_amt);
@@ -109,8 +109,10 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     public void updateTotal() {
         try {
             subtotal_amt = 0;
+            shoppingCart = new ArrayList<>();
             for (int i = 0; i < shoppingCartJson.size(); i++) {
                 JSONObject item = shoppingCartJson.get(i);
+                shoppingCart.add(item.toString());
                 float cost = Float.parseFloat(item.get("price").toString());
                 cost *= Float.parseFloat(item.get("count").toString());
                 subtotal_amt += cost;
@@ -118,7 +120,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
             float tax_amt = .05f * subtotal_amt;
             float total_amt = tax_amt + subtotal_amt;
 
-            receipt.setItems(shoppingCartJson);
+            receipt.setItems(shoppingCart);
             receipt.setSubtotal(subtotal_amt);
             receipt.setTax(tax_amt);
             receipt.setTotal(total_amt);
@@ -134,33 +136,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == checkout.getId()) {
-            FileInputStream fis;
-            ArrayList<Receipt> purchaseHistory = new ArrayList<>();
-            try {
-                fis = openFileInput("ReceiptData");
-                ObjectInputStream oi = new ObjectInputStream(fis);
-                purchaseHistory = (ArrayList<Receipt>) oi.readObject();
-                oi.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            purchaseHistory.add(receipt);
-            try {
-                FileOutputStream fos = openFileOutput("ReceiptData", MODE_PRIVATE);
-                ObjectOutputStream of = new ObjectOutputStream(fos);
-                of.writeObject(purchaseHistory);
-                of.flush();
-                of.close();
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+
     }
 
     @Override

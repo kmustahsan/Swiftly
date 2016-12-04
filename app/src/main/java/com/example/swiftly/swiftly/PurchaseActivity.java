@@ -34,6 +34,8 @@ public class PurchaseActivity extends AppCompatActivity implements AdapterView.O
             fis = openFileInput("ReceiptData");
             ObjectInputStream oi = new ObjectInputStream(fis);
             purchaseHistory = (ArrayList<Receipt>) oi.readObject();
+            System.out.println("purchase history");
+            System.out.println(purchaseHistory);
             oi.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
