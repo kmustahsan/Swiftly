@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 
 public class Receipt implements Serializable {
-    ArrayList<JSONObject> items;
+    ArrayList<String> items;
     float subtotal;
     float tax;
     float total;
@@ -25,11 +25,11 @@ public class Receipt implements Serializable {
         total = 0f;
     }
 
-    public ArrayList<JSONObject> getItems() {
+    public ArrayList<String> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<JSONObject> items) {
+    public void setItems(ArrayList<String> items) {
         this.items = items;
     }
 
@@ -62,7 +62,7 @@ public class Receipt implements Serializable {
         StringBuilder str = new StringBuilder();
         try {
             for (int i = 0; i < getItems().size(); i++) {
-                JSONObject item = items.get(i);
+                JSONObject item = new JSONObject(items.get(i));
                 String name = item.get("count") + " " + item.get("name").toString();
                 float cost = Float.parseFloat(item.get("price").toString());
                 cost *= Float.parseFloat(item.get("count").toString());
@@ -70,16 +70,16 @@ public class Receipt implements Serializable {
                 str.append(name);
                 str.append("                  ");
                 str.append(price);
-                str.append("/n");
+                str.append("\n");
             }
             str.append("Subtotal:                   ");
             str.append("$");
             str.append(String.format("%.2f", subtotal));
-            str.append("/n");
+            str.append("\n");
             str.append("Tax:                        ");
             str.append("$");
             str.append(String.format("%.2f", tax));
-            str.append("/n");
+            str.append("\n");
             str.append("Total:                      ");
             str.append("$");
             str.append(String.format("%.2f", total));

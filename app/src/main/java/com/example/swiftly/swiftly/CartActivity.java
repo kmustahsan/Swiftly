@@ -81,7 +81,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 cost *= Float.parseFloat(item.get("count").toString());
                 subtotal_amt += cost;
             }
-            receipt.setItems(shoppingCartJson);
+            receipt.setItems(shoppingCart);
             float tax_amt = .05f * subtotal_amt;
             float total_amt = tax_amt + subtotal_amt;
             receipt.setSubtotal(subtotal_amt);
@@ -109,8 +109,10 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
     public void updateTotal() {
         try {
             subtotal_amt = 0;
+            shoppingCart = new ArrayList<>();
             for (int i = 0; i < shoppingCartJson.size(); i++) {
                 JSONObject item = shoppingCartJson.get(i);
+                shoppingCart.add(item.toString());
                 float cost = Float.parseFloat(item.get("price").toString());
                 cost *= Float.parseFloat(item.get("count").toString());
                 subtotal_amt += cost;
@@ -118,7 +120,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
             float tax_amt = .05f * subtotal_amt;
             float total_amt = tax_amt + subtotal_amt;
 
-            receipt.setItems(shoppingCartJson);
+            receipt.setItems(shoppingCart);
             receipt.setSubtotal(subtotal_amt);
             receipt.setTax(tax_amt);
             receipt.setTotal(total_amt);
@@ -134,6 +136,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+<<<<<<< HEAD
         Intent intent = new Intent(this, CheckoutActivity.class);
         intent.putExtra("Receipt", receipt);
         if (v.getId() == checkout.getId()) {
@@ -163,6 +166,9 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 e.printStackTrace();
             }
         }
+=======
+
+>>>>>>> origin/mainfeature
     }
 
     @Override
