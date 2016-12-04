@@ -11,6 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class PurchaseActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
@@ -25,17 +29,20 @@ public class PurchaseActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase);
 
-        purchaseHistory = new ArrayList<>();
-        Receipt receipt1 = new Receipt();
-        receipt1.setTotal(3.6f);
-        receipt1.setSubtotal(3.6f);
-        receipt1.setTax(3.6f);
-        Receipt receipt2 = new Receipt();
-        receipt2.setTotal(4.2f);
-        receipt2.setSubtotal(5.6f);
-        receipt2.setTax(9.6f);
-        purchaseHistory.add(receipt1);
-        purchaseHistory.add(receipt2);
+        FileInputStream fis;
+        try {
+            fis = openFileInput("ReceiptData");
+            ObjectInputStream oi = new ObjectInputStream(fis);
+            purchaseHistory = (ArrayList<Receipt>) oi.readObject();
+            oi.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         purchaseList = (ListView) findViewById(R.id.purchaseList);
 
         touchHandler = new TouchHandler(this);
