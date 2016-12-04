@@ -128,7 +128,8 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        // Checkout button action here
+        Intent intent = new Intent(this, CheckoutActivity.class);
+        intent.putExtra("Receipt", receipt);
     }
 
     @Override

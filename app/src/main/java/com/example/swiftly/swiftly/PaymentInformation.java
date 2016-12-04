@@ -1,10 +1,12 @@
 package com.example.swiftly.swiftly;
 
+import java.io.Serializable;
+
 /**
  * Created by cpark on 11/30/16.
  */
 
-public class PaymentInformation {
+public class PaymentInformation implements Serializable {
 
     String cardNum;
     String date;
@@ -58,5 +60,11 @@ public class PaymentInformation {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String toString() {
+        String num = String.format("xx%s", cardNum.substring(cardNum.length() - 2, cardNum.length()));
+        String str = String.format("Payment method:\n%s   %s", num, name);
+        return str;
     }
 }

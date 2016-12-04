@@ -18,6 +18,7 @@
         <activity android:name=".CartActivity" />
         <activity android:name=".PurchaseActivity" />
         <activity android:name=".ReceiptActivity" />
+        <activity android:name=".ConfirmActivity"></activity>
     </application>
 
 </manifest>

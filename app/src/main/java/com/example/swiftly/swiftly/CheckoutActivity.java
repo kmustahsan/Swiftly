@@ -1,5 +1,6 @@
 package com.example.swiftly.swiftly;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     Button cancel;
     Button next;
     PaymentInformation info;
+    Receipt receipt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         next = (Button) findViewById(R.id.next);
         cancel.setOnClickListener(this);
         next.setOnClickListener(this);
+        Intent intent = getIntent();
+        receipt = (Receipt) intent.getSerializableExtra("Receipt");
     }
 
     @Override
@@ -51,7 +55,8 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         String clicked = ((TextView) view).getText().toString();
         if (clicked.equals("Cancel")) {
             // TODO
-        } else {
+        }
+        else {
             int selected = selection.getCheckedRadioButtonId();
             if (selected == -1) {
                 Toast toast = Toast.makeText(this, "Please select a payment option", Toast.LENGTH_SHORT);
@@ -63,10 +68,22 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
             if (text.equals("xx45 Taylor Swift")) {
                 info = new PaymentInformation("6281157490851245", "12/22", "524", "Taylor Swift",
                         "242 West Main Street, Hendersonville, TN 37075");
+                Intent intent = new Intent(this, ConfirmActivity.class);
+                Bundle extras = new Bundle();
+                extras.putSerializable("Receipt", receipt);
+                extras.putSerializable("Payment", info);
+                intent.putExtras(extras);
+                startActivity(intent);
             }
             else if (text.equals("xx64 Stephen Curry")) {
                 info = new PaymentInformation("7881257650851264", "05/22", "722", "Stephen Curry",
                         "1011 Broadway, Oakland, CA 94607");
+                Intent intent = new Intent(this, ConfirmActivity.class);
+                Bundle extras = new Bundle();
+                extras.putSerializable("Receipt", receipt);
+                extras.putSerializable("Payment", info);
+                intent.putExtras(extras);
+                startActivity(intent);
             }
             else {
                 if (number.getText().toString().equals("") || date.getText().toString().equals("") ||
@@ -79,6 +96,12 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
                 info = new PaymentInformation(number.getText().toString(), date.getText().toString(),
                         cvc.getText().toString(), name.getText().toString(),
                         address.getText().toString());
+                Intent intent = new Intent(this, ConfirmActivity.class);
+                Bundle extras = new Bundle();
+                extras.putSerializable("Receipt", receipt);
+                extras.putSerializable("Payment", info);
+                intent.putExtras(extras);
+                startActivity(intent);
             }
         }
     }
