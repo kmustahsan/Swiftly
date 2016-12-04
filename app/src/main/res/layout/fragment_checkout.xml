@@ -134,7 +134,7 @@
                 </TableRow>
                 <TableRow>
                     <Button
-                        android:id="@+id/cancel"
+                        android:id="@+id/back"
                         android:text="Cancel"
                         android:textSize="25dp"
                         android:layout_margin="10dp" />

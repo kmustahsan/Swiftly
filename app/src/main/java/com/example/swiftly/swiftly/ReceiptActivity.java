@@ -27,12 +27,6 @@ public class ReceiptActivity extends AppCompatActivity implements View.OnClickLi
         Receipt receipt = new Receipt();
         String receiptStr = "";
         receiptStr += "Date\n";
-//        ArrayList<JSONObject> array = receipt.getItems();
-//        for (JSONObject item : array) {
-//            receiptStr += item.toString() + "\n";
-//        }
-//        receiptStr += "Subtotal: " + receipt.getSubtotal() + "\n" + "Tax: "
-//                +  receipt.getTax() + "\n" + "Total: " + receipt.getTotal();
         receiptStr += receipt.toString();
         pReceipt.setText(receiptStr);
     }

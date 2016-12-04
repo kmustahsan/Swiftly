@@ -42,7 +42,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         cvc = (EditText) findViewById(R.id.cvc);
         name = (EditText) findViewById(R.id.name);
         address = (EditText) findViewById(R.id.address);
-        cancel = (Button) findViewById(R.id.cancel);
+        cancel = (Button) findViewById(R.id.back);
         next = (Button) findViewById(R.id.next);
         cancel.setOnClickListener(this);
         next.setOnClickListener(this);

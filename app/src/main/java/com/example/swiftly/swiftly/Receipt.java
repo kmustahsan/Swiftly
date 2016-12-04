@@ -17,12 +17,14 @@ public class Receipt implements Serializable {
     float subtotal;
     float tax;
     float total;
+    int day, month, year;
 
     public Receipt() {
         items = new ArrayList<>();
         subtotal = 0f;
         tax = 0f;
         total = 0f;
+        day = month = year = 0;
     }
 
     public ArrayList<String> getItems() {
@@ -55,6 +57,30 @@ public class Receipt implements Serializable {
 
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setDay(int d) {
+        day = d;
+    }
+
+    public void setMonth(int m) {
+        month = m;
+    }
+
+    public void setYear(int y) {
+        year = y;
     }
 
     @Override

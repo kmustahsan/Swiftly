@@ -39,15 +39,9 @@ public class PurchaseAdapter extends ArrayAdapter<Receipt> {
         else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        String dateStr = "Date temp holder";
+        String dateStr = "";
         String historyStr = "";
         viewHolder.date.setText(dateStr);
-//        ArrayList<JSONObject> array = receipt.getItems();
-//        for (JSONObject item : array) {
-//            historyStr += item.toString() + "\n";
-//        }
-//        historyStr += "Subtotal: " + receipt.getSubtotal() + "\n" + "Tax: "
-//                +  receipt.getTax() + "\n" + "Total: " + receipt.getTotal();
         historyStr = receipt.toString();
         viewHolder.history.setText(historyStr);
         return convertView;
