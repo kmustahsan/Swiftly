@@ -136,39 +136,9 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-<<<<<<< HEAD
         Intent intent = new Intent(this, CheckoutActivity.class);
         intent.putExtra("Receipt", receipt);
-        if (v.getId() == checkout.getId()) {
-            FileInputStream fis;
-            ArrayList<Receipt> purchaseHistory = new ArrayList<>();
-            try {
-                fis = openFileInput("ReceiptData");
-                ObjectInputStream oi = new ObjectInputStream(fis);
-                purchaseHistory = (ArrayList<Receipt>) oi.readObject();
-                oi.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            purchaseHistory.add(receipt);
-            try {
-                FileOutputStream fos = openFileOutput("ReceiptData", MODE_PRIVATE);
-                ObjectOutputStream of = new ObjectOutputStream(fos);
-                of.writeObject(purchaseHistory);
-                of.flush();
-                of.close();
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-=======
-
->>>>>>> origin/mainfeature
+        startActivity(intent);
     }
 
     @Override

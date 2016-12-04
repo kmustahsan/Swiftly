@@ -1,5 +1,6 @@
 package com.example.swiftly.swiftly;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,7 +40,9 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
             // TODO
         }
         else {
-            // TODO
+            Intent intent = new Intent(this, Receipt.class);
+            intent.putExtra("Receipt", receipt);
+            startActivity(intent);
         }
     }
 }
