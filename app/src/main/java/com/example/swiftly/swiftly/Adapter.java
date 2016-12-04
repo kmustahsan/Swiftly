@@ -2,10 +2,14 @@ package com.example.swiftly.swiftly;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -21,26 +25,44 @@ import java.util.LinkedList;
  * Created by Kevin on 11/25/16.
  */
 
-public class Adapter extends BaseAdapter {
+public class Adapter extends ArrayAdapter {
 
     CartActivity activity;
+    ArrayList<JSONObject> shoppingCart;
     TextView name;
     TextView price;
     Button delete;
+    static Handler UIHandler = null;
 
-    public Adapter(CartActivity activity) {
-        super();
+
+
+    public Adapter(final CartActivity activity, ArrayList<JSONObject> shoppingCart) {
+        super(activity, 0, shoppingCart);
         this.activity = activity;
+        this.shoppingCart = shoppingCart;
+
+        UIHandler = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                System.out.println("HIT 2");
+                if (msg.what == 0) {
+                    System.out.println("HIT 1");
+                    activity.showDeleteButtons(View.VISIBLE);
+                    activity.updateTotal();
+                }
+                super.handleMessage(msg);
+            }
+        };
     }
 
     @Override
     public int getCount() {
-        return activity.shoppingCartJson.size();
+        return shoppingCart.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return activity.shoppingCartJson.get(position);
+        return shoppingCart.get(position);
     }
 
     @Override
@@ -49,7 +71,7 @@ public class Adapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = activity.getLayoutInflater();
 
@@ -61,25 +83,25 @@ public class Adapter extends BaseAdapter {
             delete = (Button) convertView.findViewById(R.id.delete);
         }
 
-        System.out.println(position);
         delete.setTag(position);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = (Integer)v.getTag();
-                System.out.println(position);
-                JSONObject item = activity.shoppingCartJson.get(position);
+                JSONObject item = shoppingCart.get(position);
                 try {
                     int count = (int)item.get("count");
                     if (count == 1) {
-                        activity.shoppingCartJson.remove(position);
+                        shoppingCart.remove(position);
                     }
                     else {
                         item.put("count", count - 1);
-                        activity.shoppingCartJson.set(position, item);
+                        shoppingCart.set(position, item);
                     }
-                    notifyDataSetChanged();
-                    activity.updateTotal();
+                    activity.setAdapter(shoppingCart);
+//                        notifyDataSetChanged();
+                    Message msg = UIHandler.obtainMessage(0, position);
+                    msg.sendToTarget();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -88,7 +110,7 @@ public class Adapter extends BaseAdapter {
 
         try {
             // set count, name, and price on list
-            JSONObject item = activity.shoppingCartJson.get(position);
+            JSONObject item = shoppingCart.get(position);
             name.setText(item.get("count") + " " + item.get("name").toString());
             float cost = Float.parseFloat(item.get("price").toString());
             cost *= Float.parseFloat(item.get("count").toString());

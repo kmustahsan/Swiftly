@@ -76,7 +76,16 @@ public class MainActivity extends Activity {
                     item.put("count", 1);
                     shoppingCart.add(item);
                 }
-                summary.setText("Items in Shopping Cart: " + ++count);
+
+                //get the count of the amt of items in shopping cart
+                int amt = 0;
+                for (int i = 0; i < shoppingCart.size(); i++) {
+                    JSONObject cartItem = shoppingCart.get(i);
+                    int itemAmt = (int)cartItem.get("count");
+                    amt += itemAmt;
+                }
+
+                summary.setText("Items in Shopping Cart: " + amt);
             } catch (JSONException e) {
                 e.printStackTrace();
                 Toast toast = Toast.makeText(getApplicationContext(),
@@ -191,6 +200,7 @@ public class MainActivity extends Activity {
         catch (JSONException e) {
             e.printStackTrace();
         }
+        summary.setText("Items in Shopping Cart: " + shoppingCart.size());
 
         super.onActivityResult(requestCode, resultCode, data);
     }

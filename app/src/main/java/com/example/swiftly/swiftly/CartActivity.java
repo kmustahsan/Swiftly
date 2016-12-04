@@ -90,8 +90,14 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         // set list
-        adapter = new Adapter(this);
+        adapter = new Adapter(this, shoppingCartJson);
         listView.setAdapter(adapter);
+    }
+
+    public void setAdapter(ArrayList<JSONObject> aList) {
+        adapter = new Adapter(this, aList);
+        listView.setAdapter(adapter);
+        shoppingCartJson = aList;
     }
 
     public void updateTotal() {
@@ -137,14 +143,18 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                     visibility = View.INVISIBLE;
                     item.setTitle("Edit");
                 }
-                for (int i = 0; i < adapter.getCount(); i++) {
-                    View view = listView.getChildAt(i);
-                    Button deleteButton = (Button)view.findViewById(R.id.delete);
-                    deleteButton.setVisibility(visibility);
-                }
+                showDeleteButtons(visibility);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void showDeleteButtons(int visibility) {
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View view = listView.getChildAt(i);
+            Button deleteButton = (Button)view.findViewById(R.id.delete);
+            deleteButton.setVisibility(visibility);
         }
     }
 
