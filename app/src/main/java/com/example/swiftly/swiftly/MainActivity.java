@@ -1,6 +1,7 @@
 package com.example.swiftly.swiftly;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -127,10 +128,14 @@ public class MainActivity extends Activity {
             JSONObject details3 = new JSONObject();
             details3.put("name", "Crackers");
             details3.put("price", "3.00");
+            JSONObject details4 = new JSONObject();
+            details4.put("name", "Powerade");
+            details4.put("price", "1.50");
 
             itemsDB.put("3500074140", details1);
             itemsDB.put("90311017", details2);
             itemsDB.put("90311024", details3);
+            itemsDB.put("049000032789", details4);
         }
         catch (JSONException ex) {
             ex.printStackTrace();
@@ -180,9 +185,11 @@ public class MainActivity extends Activity {
             completeCart.add(item.toString());
         }
         Bundle bundle = new Bundle();
+        Bundle bndleanimation = ActivityOptions.makeCustomAnimation(getApplicationContext()
+                , R.anim.animation, R.anim.animation2).toBundle();
         bundle.putSerializable(ITEMS, completeCart);
         intent.putExtras(bundle);
-        startActivityForResult(intent, 1);
+        startActivityForResult(intent, 1, bndleanimation);
     }
 
     @Override
