@@ -30,7 +30,9 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight=".1"
+            android:textSize="20dp"
             android:text="DONE"
+            android:textColor="#FFFFFF"
             android:background="#08AE9E"
             android:id="@+id/done"/>
     </LinearLayout>
