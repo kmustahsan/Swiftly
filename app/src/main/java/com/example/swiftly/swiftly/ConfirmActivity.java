@@ -44,7 +44,7 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
         submit.setOnClickListener(this);
         Calendar c = Calendar.getInstance();
         day = c.get(Calendar.DAY_OF_MONTH);
-        month = c.get(Calendar.MONTH);
+        month = c.get(Calendar.MONTH) + 1;
         year = c.get(Calendar.YEAR);
     }
 
