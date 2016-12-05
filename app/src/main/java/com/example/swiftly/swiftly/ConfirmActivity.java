@@ -24,7 +24,7 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
     TextView payment;
     Receipt receipt;
     PaymentInformation paymentInformation;
-    int day, month, year;
+    int day, month, year, second, minute, hour;
 
 
     @Override
@@ -46,6 +46,9 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
         day = c.get(Calendar.DAY_OF_MONTH);
         month = c.get(Calendar.MONTH) + 1;
         year = c.get(Calendar.YEAR);
+        second = c.get(Calendar.SECOND);
+        minute = c.get(Calendar.MINUTE);
+        hour = c.get(Calendar.HOUR);
     }
 
     @Override
@@ -74,6 +77,9 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
             receipt.setDay(day);
             receipt.setMonth(month);
             receipt.setYear(year);
+            receipt.setSecond(second);
+            receipt.setMinute(minute);
+            receipt.setHour(hour);
             purchaseHistory.add(receipt);
             try {
                 FileOutputStream fos = openFileOutput("ReceiptData", MODE_PRIVATE);
