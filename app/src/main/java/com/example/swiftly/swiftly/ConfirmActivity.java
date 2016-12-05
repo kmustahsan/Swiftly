@@ -52,7 +52,7 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         String clicked = ((TextView) view).getText().toString();
         if (clicked.equals("Cancel")) {
-            Intent intent = new Intent(this, PaymentInformation.class);
+            Intent intent = new Intent(this, PaymentActivity.class);
             intent.putExtra("Receipt", receipt);
             startActivity(intent);
         }
@@ -83,7 +83,7 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
                 e.printStackTrace();
             }
 
-            Intent intent = new Intent(this, Receipt.class);
+            Intent intent = new Intent(this, ReceiptActivity.class);
             intent.putExtra("Receipt", receipt);
             startActivity(intent);
         }

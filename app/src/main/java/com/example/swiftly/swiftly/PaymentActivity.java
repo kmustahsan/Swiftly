@@ -28,10 +28,11 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            finish();
-            return;
-        }
+        setContentView(R.layout.activity_payment);
+//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            finish();
+//            return;
+//        }
         selection = (RadioGroup) findViewById(R.id.selection);
         number = (EditText) findViewById(R.id.number);
         date = (EditText) findViewById(R.id.date);
