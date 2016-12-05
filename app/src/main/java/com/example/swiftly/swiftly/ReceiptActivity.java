@@ -27,7 +27,7 @@ public class ReceiptActivity extends AppCompatActivity implements View.OnClickLi
         Bundle extras = getIntent().getExtras();
         Receipt receipt = (Receipt) extras.getSerializable("Receipt");
         String receiptStr = "";
-        receiptStr += "Date\n";
+        receiptStr += receipt.getDate() + "\n";
         receiptStr += receipt.toString();
         pReceipt.setText(receiptStr);
     }

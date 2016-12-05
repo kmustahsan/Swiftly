@@ -83,6 +83,10 @@ public class Receipt implements Serializable {
         year = y;
     }
 
+    public String getDate() {
+        return month + "/" + day + "/" + year;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

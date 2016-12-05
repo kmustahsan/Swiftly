@@ -71,6 +71,9 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+            receipt.setDay(day);
+            receipt.setMonth(month);
+            receipt.setYear(year);
             purchaseHistory.add(receipt);
             try {
                 FileOutputStream fos = openFileOutput("ReceiptData", MODE_PRIVATE);
