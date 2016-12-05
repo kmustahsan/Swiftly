@@ -21,13 +21,6 @@
             android:layout_weight=".9">
             <LinearLayout
                 android:layout_width="match_parent"
-<<<<<<< HEAD
-                android:layout_height="wrap_content"
-                android:id="@+id/receipt"
-                android:text="RECEIPT"
-                android:gravity="center"
-                android:textSize="20dp"/>
-=======
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <LinearLayout
@@ -55,7 +48,6 @@
                     android:text="RECEIPT"
                     android:textSize="20dp"/>
             </LinearLayout>
->>>>>>> feature/date
         </ScrollView>
         <Button
             android:layout_width="match_parent"
