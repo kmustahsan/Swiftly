@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/receipt"
                 android:text="RECEIPT"
+                android:gravity="center"
                 android:textSize="20dp"/>
         </ScrollView>
         <Button
