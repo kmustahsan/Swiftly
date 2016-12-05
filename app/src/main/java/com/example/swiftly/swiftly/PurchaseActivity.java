@@ -56,8 +56,7 @@ public class PurchaseActivity extends AppCompatActivity implements AdapterView.O
     }
 
     public void onSwipeLeft() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void onSwipeRight() {

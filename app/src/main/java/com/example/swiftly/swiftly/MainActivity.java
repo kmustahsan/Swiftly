@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.JsonWriter;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -198,17 +199,21 @@ public class MainActivity extends Activity {
         shoppingCart = new ArrayList<>();
         Bundle bundle = data.getExtras();
         ArrayList<String> cartString = (ArrayList<String>) bundle.getSerializable(ITEMS);
+        Log.d("my Tag", cartString.toString());
 
         try {
+            int amt = 0;
             for (int i = 0; i < cartString.size(); i++) {
                 JSONObject item = new JSONObject(cartString.get(i));
                 shoppingCart.add(item);
+                int itemAmt = (int)item.get("count");
+                amt += itemAmt;
             }
+            summary.setText("Items in Shopping Cart: " + amt);
         }
         catch (JSONException e) {
             e.printStackTrace();
         }
-        summary.setText("Items in Shopping Cart: " + shoppingCart.size());
 
         super.onActivityResult(requestCode, resultCode, data);
     }

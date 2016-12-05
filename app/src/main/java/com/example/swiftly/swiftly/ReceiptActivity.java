@@ -34,7 +34,18 @@ public class ReceiptActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
+
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        ArrayList<String> completeCart = new ArrayList<>();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(MainActivity.ITEMS, completeCart);
+        intent.putExtras(bundle);
+        setResult(1, intent);
+
+        Intent intent1 = new Intent(this, MainActivity.class);
+        intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent1);
     }
 }
