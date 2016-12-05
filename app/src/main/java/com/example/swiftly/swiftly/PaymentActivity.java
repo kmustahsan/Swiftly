@@ -49,7 +49,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         String clicked = ((TextView) view).getText().toString();
         if (clicked.equals("Cancel")) {
-            // TODO
+            finish();
         }
         else {
             int selected = selection.getCheckedRadioButtonId();
