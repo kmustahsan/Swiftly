@@ -93,7 +93,7 @@ public class Receipt implements Serializable {
                 float cost = Float.parseFloat(item.get("price").toString());
                 cost *= Float.parseFloat(item.get("count").toString());
                 String price = "$" + String.format("%-10.2f", cost);
-                String temp = String.format("%-10s", name);
+                String temp = String.format("%10s", name);
                 str.append(temp);
                 str.append("                  ");
                 str.append(price);
