@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="Shopping Cart Empty"
+            android:textSize="25dp"
             android:textAlignment="center"
             android:background="#08AE9E"
             android:id="@+id/summary"/>

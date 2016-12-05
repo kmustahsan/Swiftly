@@ -52,9 +52,7 @@ public class ConfirmActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         String clicked = ((TextView) view).getText().toString();
         if (clicked.equals("Cancel")) {
-            Intent intent = new Intent(this, PaymentActivity.class);
-            intent.putExtra("Receipt", receipt);
-            startActivity(intent);
+            finish();
         }
         else {
             FileInputStream fis;

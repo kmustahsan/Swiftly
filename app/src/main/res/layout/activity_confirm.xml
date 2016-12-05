@@ -66,6 +66,7 @@
                         android:width="120dp"
                         android:background="#08AE9E"
                         android:text="Cancel"
+                        android:textColor="#FFFFFF"
                         android:textSize="25dp" />
 
                     <Button
@@ -74,6 +75,7 @@
                         android:width="120dp"
                         android:background="#08AE9E"
                         android:text="Submit"
+                        android:textColor="#FFFFFF"
                         android:textSize="25dp" />
                 </TableRow>
             </TableLayout>
