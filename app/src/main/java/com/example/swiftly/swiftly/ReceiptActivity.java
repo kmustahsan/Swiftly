@@ -21,15 +21,16 @@ public class ReceiptActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_receipt);
 
         TextView pReceipt = (TextView) findViewById(R.id.receipt);
+        TextView pDate = (TextView) findViewById(R.id.date);
+        TextView pTime = (TextView) findViewById(R.id.time);
         done = (Button) findViewById(R.id.done);
         done.setOnClickListener(this);
 
         Bundle extras = getIntent().getExtras();
         Receipt receipt = (Receipt) extras.getSerializable("Receipt");
-        String receiptStr = "";
-        receiptStr += "Date\n";
-        receiptStr += receipt.toString();
-        pReceipt.setText(receiptStr);
+        pDate.setText(receipt.getDate());
+        pTime.setText(receipt.getTime());
+        pReceipt.setText(receipt.toString());
     }
 
     @Override
