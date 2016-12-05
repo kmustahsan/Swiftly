@@ -20,10 +20,10 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:text="Shopping Cart Empty"
             android:textAlignment="center"
-            android:background="@color/colorPrimary"
+            android:background="#08AE9E"
             android:id="@+id/summary"/>
     </LinearLayout>
 </RelativeLayout>

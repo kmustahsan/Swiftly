@@ -90,48 +90,62 @@
                         android:layout_height="45dp"
                         android:maxLines="1" />
                 </TableRow>
+
                 <TableRow>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="MM/YY" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="CVC" />
                 </TableRow>
+
                 <TableRow>
+
                     <EditText
                         android:id="@+id/date"
                         android:layout_width="60dp"
                         android:layout_height="45dp"
                         android:maxLines="1" />
+
                     <EditText
                         android:id="@+id/cvc"
                         android:layout_width="60dp"
                         android:layout_height="45dp"
                         android:maxLines="1" />
                 </TableRow>
+
                 <TableRow>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Cardholder Name" />
                 </TableRow>
+
                 <TableRow>
+
                     <EditText
                         android:id="@+id/name"
                         android:layout_width="100dp"
                         android:layout_height="45dp"
                         android:maxLines="1" />
                 </TableRow>
+
                 <TableRow>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Billing Address" />
                 </TableRow>
+
                 <TableRow>
+
                     <EditText
                         android:id="@+id/address"
                         android:layout_width="100dp"
@@ -139,21 +153,28 @@
                         android:maxLines="1" />
                 </TableRow>
             </TableLayout>
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <TableRow
-                    android:gravity="center">
+
+                <TableRow android:gravity="center">
+
                     <Button
                         android:id="@+id/back"
+                        android:layout_margin="10dp"
+                        android:width="120dp"
+                        android:background="#08AE9E"
                         android:text="Cancel"
-                        android:textSize="25dp"
-                        android:layout_margin="10dp" />
+                        android:textSize="25dp" />
+
                     <Button
                         android:id="@+id/next"
+                        android:layout_margin="10dp"
+                        android:width="140dp"
+                        android:background="#08AE9E"
                         android:text="Continue"
-                        android:textSize="25dp"
-                        android:layout_margin="10dp"/>
+                        android:textSize="25dp" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>

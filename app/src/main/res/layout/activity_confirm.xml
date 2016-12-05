@@ -63,12 +63,16 @@
                     <Button
                         android:id="@+id/cancel"
                         android:layout_margin="30dp"
+                        android:width="120dp"
+                        android:background="#08AE9E"
                         android:text="Cancel"
                         android:textSize="25dp" />
 
                     <Button
                         android:id="@+id/submit"
                         android:layout_margin="30dp"
+                        android:width="120dp"
+                        android:background="#08AE9E"
                         android:text="Submit"
                         android:textSize="25dp" />
                 </TableRow>

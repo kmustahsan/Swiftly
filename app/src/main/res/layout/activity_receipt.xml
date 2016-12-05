@@ -31,6 +31,7 @@
             android:layout_height="0px"
             android:layout_weight=".1"
             android:text="DONE"
+            android:background="#08AE9E"
             android:id="@+id/done"/>
     </LinearLayout>
 
