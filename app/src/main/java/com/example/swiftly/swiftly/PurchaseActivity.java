@@ -51,8 +51,11 @@ public class PurchaseActivity extends AppCompatActivity implements AdapterView.O
         purchaseList.setOnItemClickListener(this);
         purchaseList.setOnTouchListener(touchHandler);
 
-        pAdapter = new PurchaseAdapter(this, R.id.purchaseList, purchaseHistory);
-        purchaseList.setAdapter(pAdapter);
+        if (purchaseHistory != null) {
+            pAdapter = new PurchaseAdapter(this, R.id.purchaseList, purchaseHistory);
+            purchaseList.setAdapter(pAdapter);
+        }
+
     }
 
     public void onSwipeLeft() {

@@ -39,9 +39,11 @@ public class PurchaseAdapter extends ArrayAdapter<Receipt> {
         else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        String dateStr = receipt.getDate() + " - " + receipt.getTime();
-        viewHolder.date.setText(dateStr);
-        viewHolder.history.setText(receipt.toString());
+        if (receipt != null) {
+            String dateStr = receipt.getDate() + " - " + receipt.getTime();
+            viewHolder.date.setText(dateStr);
+            viewHolder.history.setText(receipt.toString());
+        }
         return convertView;
     }
 
