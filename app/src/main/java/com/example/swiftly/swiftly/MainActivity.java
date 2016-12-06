@@ -132,11 +132,19 @@ public class MainActivity extends Activity {
             JSONObject details4 = new JSONObject();
             details4.put("name", "Powerade");
             details4.put("price", "1.50");
+            JSONObject details5 = new JSONObject();
+            details5.put("name", "Notebook");
+            details5.put("price", "1.00");
+            JSONObject details6 = new JSONObject();
+            details6.put("name", "Binder");
+            details6.put("price", "2.00");
 
             itemsDB.put("3500074140", details1);
             itemsDB.put("90311017", details2);
             itemsDB.put("90311024", details3);
             itemsDB.put("049000032789", details4);
+            itemsDB.put("718103188807", details5);
+            itemsDB.put("4894102100074", details6);
         }
         catch (JSONException ex) {
             ex.printStackTrace();

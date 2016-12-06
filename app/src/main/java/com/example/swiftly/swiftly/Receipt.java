@@ -17,14 +17,14 @@ public class Receipt implements Serializable {
     float subtotal;
     float tax;
     float total;
-    int day, month, year, hour, minute, second;
+    int day, month, year, hour, minute;
 
     public Receipt() {
         items = new ArrayList<>();
         subtotal = 0f;
         tax = 0f;
         total = 0f;
-        day = month = year = hour = minute = second = 0;
+        day = month = year = hour = minute = 0;
     }
 
     public ArrayList<String> getItems() {
@@ -71,10 +71,6 @@ public class Receipt implements Serializable {
         year = y;
     }
 
-    public void setSecond(int s) {
-        second = s;
-    }
-
     public void setMinute(int m) {
         minute = m;
     }
@@ -88,7 +84,7 @@ public class Receipt implements Serializable {
     }
 
     public String getTime() {
-        return hour + ":" + minute + ":" + second;
+        return hour + ":" + minute;
     }
 
     @Override
